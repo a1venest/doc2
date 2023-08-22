@@ -4,7 +4,6 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;

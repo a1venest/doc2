@@ -53,6 +53,7 @@
                     <dateField id="regDataField" property="regData" editable="false"/>
                     <textField id="whomField" property="whom"/>
                     <textField id="themeField" property="theme"/>
+                    <textField id="initiatorField" property="initiator"/>
                     <textField id="addresseeField" property="addressee"/>
                     <textField id="executorField" property="executor" editable="false"/>
                     <textField id="signatoryField" property="signatory"/>
@@ -81,11 +82,14 @@
                         </column>
                     </form>
                 </scrollBox>
-                <scrollBox id="procActionsBox"
-                     caption="msg://process">
+                <groupBox id="procActionsBox"
+                     caption="msg://process"
+                          spacing="true"
+                          width="AUTO"
+                          orientation="vertical">
                     <fragment id="procActionsFragment"
                               screen="bpm_ProcActionsFragment"/>
-                </scrollBox>
+                </groupBox>
                 <scrollBox caption="msg://attachments"
                      id="attachmentsTab"
                      spacing="true"

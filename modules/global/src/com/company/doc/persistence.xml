@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="doc" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.doc.entity.DocumentType</class>
+        <class>com.company.doc.entity.Employees</class>
+        <class>com.company.doc.entity.Subdivisions</class>
+        <class>com.company.doc.entity.OutgoingDocuments</class>
+        <class>com.company.doc.entity.HasProcessState</class>
+    </persistence-unit>
+</persistence>

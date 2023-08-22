@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://subdivisionsBrowse.caption"
+        focusComponent="subdivisionsesTable"
+        messagesPack="com.company.doc.web.screens.subdivisions">
+    <data readOnly="true">
+        <collection id="subdivisionsesDc"
+                    class="com.company.doc.entity.Subdivisions">
+            <view extends="_local"/>
+            <loader id="subdivisionsesDl">
+                <query>
+                    <![CDATA[select e from doc_Subdivisions e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="subdivisionsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="subdivisionsesTable"
+                dataLoader="subdivisionsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="subdivisionsesTable"
+                    width="100%"
+                    dataContainer="subdivisionsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="subdivisionsesTable.create"/>
+                <button id="editBtn" action="subdivisionsesTable.edit"/>
+                <button id="removeBtn" action="subdivisionsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

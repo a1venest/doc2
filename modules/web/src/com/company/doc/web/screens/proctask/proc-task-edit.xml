@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://procTaskEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.doc.web.screens.proctask">
+    <data>
+        <instance id="procTaskDc"
+                  class="com.haulmont.bpm.entity.ProcTask">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="procTaskDc">
+                <column width="350px">
+                    <dateField id="startDateField" property="startDate"/>
+                    <dateField id="endDateField" property="endDate"/>
+                    <textField id="outcomeField" property="outcome"/>
+                    <textField id="actExecutionIdField" property="actExecutionId"/>
+                    <textField id="nameField" property="name"/>
+                    <textField id="actTaskIdField" property="actTaskId"/>
+                    <textArea id="commentField" property="comment" rows="5"/>
+                    <checkBox id="cancelledField" property="cancelled"/>
+                    <dateField id="claimDateField" property="claimDate"/>
+                    <textField id="actProcessDefinitionIdField" property="actProcessDefinitionId"/>
+                    <textField id="actTaskDefinitionKeyField" property="actTaskDefinitionKey"/>
+                    <textField id="locNameField" property="locName"/>
+                    <textField id="locOutcomeField" property="locOutcome"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

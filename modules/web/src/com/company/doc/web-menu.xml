@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-doc" insertBefore="administration" caption="mainMsg://menu_config.application-doc">
+        <item screen="doc_DocumentType.browse" caption="mainMsg://menu_config.doc_DocumentType.browse"/>
+        <item screen="doc_Employees.browse" caption="mainMsg://menu_config.doc_Employees.browse"/>
+        <item screen="doc_Subdivisions.browse" caption="mainMsg://menu_config.doc_Subdivisions.browse"/>
+        <item screen="docs_OutgoingDocuments.browse" caption="mainMsg://menu_config.docs_OutgoingDocuments.browse"/>
+        <item screen="screen" caption="mainMsg://menu_config.screen"/>
+    </menu>
+</menu-config>

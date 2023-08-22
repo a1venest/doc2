@@ -1,0 +1,12 @@
+alter table SEC_USER rename column user_id to user_id__u48441 ;
+alter table SEC_USER drop constraint FK_SEC_USER_ON_USER ;
+drop index IDX_SEC_USER_ON_USER ;
+alter table SEC_USER rename column phone to phone__u39122 ;
+alter table SEC_USER rename column number_ to number___u26617 ;
+alter table SEC_USER rename column dtype to dtype__u57706 ;
+alter table SEC_USER rename column subdivision_id to subdivision_id__u87981 ;
+alter table SEC_USER drop constraint FK_SEC_USER_ON_SUBDIVISION ;
+drop index IDX_SEC_USER_ON_SUBDIVISION ;
+alter table SEC_USER rename column photo_id to photo_id__u12192 ;
+alter table SEC_USER drop constraint FK_SEC_USER_ON_PHOTO ;
+drop index IDX_SEC_USER_ON_PHOTO ;

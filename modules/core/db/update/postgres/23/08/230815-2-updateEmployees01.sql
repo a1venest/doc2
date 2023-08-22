@@ -1,0 +1,3 @@
+alter table DOC_EMPLOYEES rename column outgoing_documents_id to outgoing_documents_id__u27290 ;
+alter table DOC_EMPLOYEES drop constraint FK_DOC_EMPLOYEES_ON_OUTGOING_DOCUMENTS ;
+drop index IDX_DOC_EMPLOYEES_ON_OUTGOING_DOCUMENTS ;

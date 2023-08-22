@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://outgoingDocumentsBrowse.caption"
+        focusComponent="outgoingDocumentsesTable"
+        messagesPack="com.company.doc.web.screens.outgoingdocuments">
+    <data readOnly="true">
+        <collection id="outgoingDocumentsesDc"
+                    class="com.company.doc.entity.OutgoingDocuments">
+            <view>
+                <property name="docType" view="_minimal"/>
+                <property name="theme"/>
+                <property name="executor"/>
+                <property name="name"/>
+                <property name="author"/>
+                <property name="dateOfCreation"/>
+            </view>
+            <loader id="outgoingDocumentsesDl">
+                <query>
+                    <![CDATA[select e from docs_OutgoingDocuments e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="outgoingDocumentsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="outgoingDocumentsesTable"
+                dataLoader="outgoingDocumentsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="outgoingDocumentsesTable"
+                    width="100%"
+                    dataContainer="outgoingDocumentsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="docType"/>
+                <column id="theme"/>
+                <column id="executor"/>
+                <column id="name"/>
+                <column id="author"/>
+                <column id="dateOfCreation"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="outgoingDocumentsesTable.create"/>
+                <button id="editBtn" action="outgoingDocumentsesTable.edit"/>
+                <button id="removeBtn" action="outgoingDocumentsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

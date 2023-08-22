@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://outgoingDocumentsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.doc.web.screens.outgoingdocuments">
+    <data>
+        <instance id="outgoingDocumentsDc"
+                  class="com.company.doc.entity.OutgoingDocuments"
+                  view="outgoingDocuments-view">
+
+            <loader id="outgoingDocumentsDl"/>
+        </instance>
+        <instance id="docTypeDC"
+        class="com.company.doc.entity.OutgoingDocuments">
+            <view extends="_local">
+                <property name="docType" view="_minimal"/>
+            </view>
+        </instance>
+        <instance id="procTaskDc"
+                  class="com.haulmont.bpm.entity.ProcTask">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+        <collection id="procAttachmentsDc"
+                    class="com.haulmont.bpm.entity.ProcAttachment"
+                    view="procAttachment-browse">
+            <loader id="procAttachmentsDl">
+                <query><![CDATA[select e from bpm$ProcAttachment e
+                                where e.procInstance.entity.entityId  = :entityId
+                                order by e.createTs]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tabSheet" spacing="true">
+        <tabSheet id="tabSheet">
+            <tab id="scrollTab"
+            caption="Outgoing Documents"
+            margin="true"
+            spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="outgoingDocumentsDc">
+                <column width="350px">
+                    <pickerField id="docTypeField" property="docType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="regNumberField" property="regNumber" editable="false"/>
+                    <dateField id="regDataField" property="regData" editable="false"/>
+                    <textField id="whomField" property="whom"/>
+                    <textField id="themeField" property="theme"/>
+                    <textField id="addresseeField" property="addressee"/>
+                    <textField id="executorField" property="executor" editable="false"/>
+                    <textField id="signatoryField" property="signatory"/>
+                    <textField id="noteField" property="note"/>
+                    <textField id="nameField" property="name" editable="false"/>
+                    <textField id="authorField" property="author" editable="false"/>
+                    <dateField id="dateOfCreationField" property="dateOfCreation" editable="false"/>
+                    <dateField id="dateOfChangeField" property="dateOfChange" editable="false"/>
+                </column>
+            </form>
+        </scrollBox></tab>
+            <tab id="documentTab">
+                <upload id="documentField" fileStoragePutMode="IMMEDIATE" property="document" showFileName="true"/>
+                <image id="document" dataContainer="outgoingDocumentsDc" property="document"/>
+            </tab>
+            <tab id="agreementTab">
+
+                <scrollBox id="scrollBox2" spacing="true">
+                    <form id="form2" dataContainer="procTaskDc">
+                        <column width="350px">
+
+                            <dateField id="startDateField" property="startDate" editable="false"/>
+                            <dateField id="endDateField" property="endDate" editable="false"/>
+                            <textField id="outcomeField" property="outcome" editable="false"/>
+                            <textArea id="commentField" property="comment" rows="5" editable="false"/>
+                        </column>
+                    </form>
+                </scrollBox>
+                <scrollBox id="procActionsBox"
+                     caption="msg://process">
+                    <fragment id="procActionsFragment"
+                              screen="bpm_ProcActionsFragment"/>
+                </scrollBox>
+                <scrollBox caption="msg://attachments"
+                     id="attachmentsTab"
+                     spacing="true"
+                     margin="true">
+                    <table id="attachmentsTable"
+                           dataContainer="procAttachmentsDc"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="file.name"/>
+                            <column id="author"/>
+                            <column id="type"/>
+                            <column id="comment"
+                                    maxTextLength="50"/>
+                        </columns>
+                    </table>
+                </scrollBox>
+            </tab>
+
+
+
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

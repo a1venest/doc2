@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://employeesBrowse.caption"
+        focusComponent="employeesesTable"
+        messagesPack="com.company.doc.web.screens.employees">
+    <data readOnly="true">
+        <collection id="employeesesDc"
+                    class="com.company.doc.entity.Employees">
+            <view extends="_local">
+                <property name="user" view="_minimal">
+                    <property name="firstName"/>
+                    <property name="lastName"/>
+                    <property name="middleName"/>
+                    <property name="email"/>
+                </property>
+                <property name="subdivision" view="_minimal"/>
+                <property name="photo" view="_base"/>
+
+            </view>
+            <loader id="employeesesDl">
+                <query>
+                    <![CDATA[select e from doc_Employees e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="employeesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="employeesesTable"
+                dataLoader="employeesesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="employeesesTable"
+                    width="100%"
+                    dataContainer="employeesesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="user"/>
+                <column id="phone"/>
+                <column id="subdivision"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="employeesesTable.create"/>
+                <button id="editBtn" action="employeesesTable.edit"/>
+                <button id="removeBtn" action="employeesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

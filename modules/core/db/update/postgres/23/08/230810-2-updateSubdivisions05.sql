@@ -1,0 +1,1 @@
+alter table DOC_SUBDIVISIONS add constraint FK_DOC_SUBDIVISIONS_ON_DIVISION_HEAD foreign key (DIVISION_HEAD_ID) references SEC_USER(ID);

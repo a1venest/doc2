@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="docs_OutgoingDocuments" name="outgoingDocuments-view" extends="_local">
+
+        <property name="docType" view="_minimal"/>
+        <property name="document" view="_minimal"/>
+        <property name="initiator" view="_minimal">
+            <property name="user">
+                <property name="login"/>
+                <property name="name"/>
+            </property>
+        </property>
+        <property name="subdivision" view="_minimal"/>
+        <property name="executor" view="_minimal">
+            <property name="user">
+                <property name="login"/>
+                <property name="name"/>
+            </property>
+        </property>
+        <property name="divisionHead" view="_minimal">
+            <property name="user">
+                <property name="login"/>
+                <property name="name"/>
+            </property>
+        </property>
+        <property name="signatory" view="_local"/>
+    </view>
+
+</views>

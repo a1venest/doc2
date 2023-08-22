@@ -1,0 +1,2 @@
+alter table SEC_USER add constraint FK_SEC_USER_ON_SUBDIVISION foreign key (SUBDIVISION_ID) references DOC_SUBDIVISIONS(ID);
+create index IDX_SEC_USER_ON_SUBDIVISION on SEC_USER (SUBDIVISION_ID);

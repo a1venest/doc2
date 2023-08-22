@@ -1,0 +1,3 @@
+alter table DOCS_OUTGOING_DOCUMENTS rename column signatory to signatory__u92582 ;
+alter table DOCS_OUTGOING_DOCUMENTS drop constraint FK_DOCS_OUTGOING_DOCUMENTS_ON_SIGNATORY ;
+drop index IDX_DOCS_OUTGOING_DOCUMENTS_ON_SIGNATORY ;
